@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+    <title>BackboneJS</title>
+</head>
+<body>
+    <div id="content"></div>
+    <!-- there are 2 ways to define templates -->
+    <!-- 1st way to define template -->
+
+    <!-- <script type="text/html" id="eventTemplate">
+        <button id="btnClick">Click Me</button>
+    </script> -->
+    <script>
+        $(document).ready(function() {
+            var FirstView = Backbone.View.extend({
+                el: "#content",
+                // 2nd way to define template
+
+                template: _.template('Hello click me <button>Click Me</button>'),
+                events: {
+                    "click button" : "onClick"
+                },
+                initialize: function () {
+                    this.render();
+                },
+                render: function () {
+                    this.$el.html(this.template())
+                    console.log("Hello World");
+                },
+                onClick: function() {
+                    alert("Hello Pavan");
+                }
+            });
+            var fView = new FirstView();
+        })
+    </script>
+</body>
+</html>
